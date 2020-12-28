@@ -1,9 +1,10 @@
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+load("@bazel_tools//tools/build_defs/repo:utils.bzl", "maybe")
+
 def _maybe(repo_rule, name, **kwargs):
     if name not in native.existing_rules():
         repo_rule(name = name, **kwargs)
 
-load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
-	
 def repositories():
     _maybe(
         http_archive,
@@ -39,7 +40,7 @@ def repositories():
     )
     
     _maybe(
-        new_http_archive,
+        http_archive,
         name = "com_github_google_snappy",
 	build_file = "@com_github_cschuet_snappy//bazel/third_party/snappy:snappy.BUILD",
         strip_prefix = "snappy-ea660b57d65d68d521287c903459b6dd3b2804d0",
