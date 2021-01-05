@@ -12,5 +12,6 @@ cc_library(
         ["**/*.h"],
 	exclude = ["snappy-test.h"],
     ),
+    visibility = ["//visibility:public"],
 )
 
